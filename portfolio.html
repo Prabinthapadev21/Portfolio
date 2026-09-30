@@ -140,9 +140,105 @@ footer .links{flex-wrap:wrap;gap:16px}
 #cf input{padding:10px 12px}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+
+/* ===== PAGE LOADER ===== */
+#page-loader{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  background:#070a14;
+  transition:opacity .55s ease, visibility .55s ease;
+}
+#page-loader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+.loader-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+}
+.loader-logo{
+  width:72px;
+  height:72px;
+  display:grid;
+  place-items:center;
+  border-radius:20px;
+  font:700 28px var(--h);
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--vio));
+  box-shadow:0 0 45px rgba(76,125,255,.35);
+  animation:loaderPulse 1.8s ease-in-out infinite;
+}
+.loader-ring{
+  position:absolute;
+  width:92px;
+  height:92px;
+  border-radius:24px;
+  border:2px solid transparent;
+  border-top-color:var(--cy);
+  border-right-color:var(--blue);
+  animation:loaderSpin 1s linear infinite;
+}
+.loader-name{
+  font:600 15px var(--h);
+  color:var(--t);
+  letter-spacing:.08em;
+}
+.loader-status{
+  color:var(--m);
+  font-size:12px;
+  letter-spacing:.04em;
+}
+.loader-bar{
+  width:180px;
+  height:3px;
+  border-radius:99px;
+  overflow:hidden;
+  background:rgba(255,255,255,.08);
+}
+.loader-bar::after{
+  content:"";
+  display:block;
+  width:45%;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg,var(--blue),var(--cy));
+  animation:loaderProgress 1.35s ease-in-out infinite;
+}
+@keyframes loaderSpin{to{transform:rotate(360deg)}}
+@keyframes loaderPulse{
+  50%{transform:scale(1.04);box-shadow:0 0 60px rgba(139,108,255,.5)}
+}
+@keyframes loaderProgress{
+  0%{transform:translateX(-130%)}
+  100%{transform:translateX(320%)}
+}
+@media(prefers-reduced-motion:reduce){
+  #page-loader{transition:none}
+  .loader-logo,.loader-ring,.loader-bar::after{animation:none}
+}
+
 </style>
 </head>
 <body>
+<!-- Page loading screen -->
+<div id="page-loader" role="status" aria-label="Loading portfolio">
+  <div class="loader-wrap">
+    <div style="position:relative;display:grid;place-items:center;width:92px;height:92px">
+      <div class="loader-ring"></div>
+      <div class="loader-logo">PT</div>
+    </div>
+    <div class="loader-name">PRABIN THAPA</div>
+    <div class="loader-status" id="loader-status">Initializing portfolio...</div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
 <nav id="nav"><div class="w nb">
 <a href="#home" class="logo" aria-label="Prabin Thapa, home">PT</a>
 <div class="links" id="links"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a></div>
@@ -160,7 +256,7 @@ footer .links{flex-wrap:wrap;gap:16px}
 </div>
 <div class="pw">
 <div class="ring"></div>
-<div class="pi" id="pi"><!-- Replace with: <img src="YOUR_PHOTO_URL" alt="Portrait of Prabin Thapa" loading="lazy"> -->
+<div class="pi" id="pi"><img src="photo.jpg" alt="Portrait of Prabin Thapa" loading="lazy">
 <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Profile photo placeholder</div></div>
 <span class="fb">Python</span><span class="fb">Django</span><span class="fb">AI</span><span class="fb">RAG</span><span class="fb">Git</span>
 </div></div></section>
@@ -236,6 +332,70 @@ footer .links{flex-wrap:wrap;gap:16px}
 </div>
 
 <script>
+/* ===== PAGE LOADER ===== */
+
+(function(){
+
+  const loader = document.getElementById("page-loader");
+  const status = document.getElementById("loader-status");
+
+  const messages = [
+    "Initializing portfolio...",
+    "Loading projects...",
+    "Preparing AI experience...",
+    "Loading developer profile...",
+    "Connecting experience...",
+    "Almost ready..."
+  ];
+
+  let i = 0;
+
+  const timer = setInterval(() => {
+
+    if(status && i < messages.length - 1){
+      i++;
+      status.textContent = messages[i];
+    }
+
+  }, 1000); // Change message every 1 second
+
+
+  function hideLoader(){
+
+    clearInterval(timer);
+
+    if(status) {
+      status.textContent = "Welcome to my portfolio.";
+    }
+
+    setTimeout(() => {
+      if(loader) {
+        loader.classList.add("hide");
+      }
+    }, 500);
+
+  }
+
+
+  // Wait for the page to fully load
+  if(document.readyState === "complete") {
+
+    setTimeout(hideLoader, 5000);
+
+  } else {
+
+    window.addEventListener("load", () => {
+      setTimeout(hideLoader, 5000);
+    }, {once:true});
+
+  }
+
+
+  // Safety fallback: maximum 8 seconds
+  setTimeout(hideLoader, 8000);
+
+})();
+
 /* ===== DATA LAYER: edit here. The chatbot reads only from PROFILE. ===== */
 const CONFIG={github:"YOUR_GITHUB_URL",email:"YOUR_EMAIL",formEndpoint:"" /* e.g. Formspree URL */,chatEndpoint:"" /* optional LLM backend URL */};
 const PROFILE={
