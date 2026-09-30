@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prabin Thapa | Python Backend & Generative AI Developer</title>
+<meta name="description" content="Portfolio of Prabin Thapa, a BCA student exploring Python, Django, Generative AI, RAG, AI agents, and modern software development.">
+<meta property="og:title" content="Prabin Thapa | Python Backend & Generative AI Developer">
+<meta property="og:description" content="BCA student building toward Python backend and Generative AI development.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070a14;--s:rgba(255,255,255,.045);--b:rgba(255,255,255,.1);--t:#e8ecf6;--m:#9aa4bd;--blue:#4c7dff;--vio:#8b6cff;--cy:#3fd8e8;--h:'Space Grotesk',system-ui,sans-serif;--f:'Inter',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#070a14}}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--t);font:400 16px/1.65 var(--f);overflow-x:hidden;
+background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(600px 400px at 85% 8%,rgba(76,125,255,.18),transparent),radial-gradient(500px 400px at 5% 40%,rgba(139,108,255,.12),transparent);pointer-events:none;z-index:-1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cy);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--h);line-height:1.15;margin:0}
+.w{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:92px 0}
+h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+.sub{color:var(--m);max-width:60ch;margin:0 0 40px}
+.glass{background:var(--s);border:1px solid var(--b);border-radius:20px;backdrop-filter:blur(14px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;border:1px solid var(--b);font:600 15px var(--f);color:var(--t);background:var(--s);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--blue)}
+.btn.p{background:linear-gradient(135deg,var(--blue),var(--vio));border:0;box-shadow:0 8px 28px -8px rgba(76,125,255,.7)}
+.btn.sm{padding:8px 14px;font-size:13.5px;border-radius:10px}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.sc{background:rgba(7,10,20,.72);backdrop-filter:blur(16px);border-color:var(--b)}
+.nb{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font:700 20px var(--h);width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--vio))}
+.links{display:flex;gap:26px;color:var(--m);font-size:15px}
+.links a:hover,.links a.on{color:var(--t)}
+.burger{display:none;background:none;border:1px solid var(--b);border-radius:10px;width:42px;height:42px;color:var(--t);cursor:pointer}
+@media(max-width:860px){.links,.nb>.btn{display:none}.burger{display:block}
+nav.open .links{display:flex;position:absolute;top:66px;left:12px;right:12px;flex-direction:column;gap:0;padding:8px;background:rgba(12,16,30,.96);border:1px solid var(--b);border-radius:16px}
+nav.open .links a{padding:14px}}
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px}
+.hg{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;font-size:13.5px;color:var(--cy);border:1px solid rgba(63,216,232,.3);background:rgba(63,216,232,.07)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--cy);animation:pl 2s infinite}
+@keyframes pl{50%{opacity:.3}}
+.hero h1{font-size:clamp(34px,5.6vw,64px);margin:22px 0 6px}
+.hero h1 small{display:block;font-size:.42em;color:var(--m);font-weight:500;margin-bottom:10px}
+.grad{background:linear-gradient(90deg,var(--blue),var(--cy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--m);max-width:52ch;margin:18px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.cta .lnk{color:var(--m);text-decoration:underline;text-underline-offset:4px;margin-left:6px}
+.pw{position:relative;width:min(380px,84%);aspect-ratio:1;margin:auto;animation:fl 7s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.ring{position:absolute;inset:-4px;border-radius:38%;background:conic-gradient(from 0deg,var(--blue),var(--vio),var(--cy),var(--blue));animation:sp 12s linear infinite;filter:blur(1px)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.pi{position:absolute;inset:0;border-radius:38%;background:#0c1122;border:6px solid #0c1122;overflow:hidden;display:grid;place-items:center;text-align:center;color:var(--m);font-size:13px}
+.pi img{width:100%;height:100%;object-fit:cover}
+.pi svg{width:46%;opacity:.5;margin-bottom:8px}
+.fb{position:absolute;padding:6px 14px;border-radius:99px;font:600 13px var(--f);background:rgba(12,16,30,.85);border:1px solid var(--b);backdrop-filter:blur(8px)}
+.fb:nth-of-type(1){top:6%;left:-6%}.fb:nth-of-type(2){top:22%;right:-8%}.fb:nth-of-type(3){bottom:26%;left:-10%}.fb:nth-of-type(4){bottom:6%;right:2%}.fb:nth-of-type(5){top:-2%;right:28%}
+@media(max-width:860px){.hg{grid-template-columns:1fr}.pw{order:-1;width:min(280px,72%)}.hero{padding-top:100px}}
+/* cards */
+.grid{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(76,125,255,.6);box-shadow:0 14px 40px -18px rgba(76,125,255,.6)}
+.card h3{font-size:18px;margin-bottom:6px}.card p{margin:0;color:var(--m);font-size:14.5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+.tl{position:relative;padding-left:26px;border-left:2px solid var(--b)}
+.tl div{position:relative;padding-bottom:22px}
+.tl div::before{content:"";position:absolute;left:-33px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(76,125,255,.2)}
+.tl b{font-family:var(--h)}.tl span{display:block;color:var(--m);font-size:14.5px}
+/* skills */
+.cat{margin-bottom:30px}.cat h3{font-size:17px;margin-bottom:12px;display:flex;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.sk{position:relative;padding:10px 16px;border-radius:14px;cursor:default;transition:transform .2s,box-shadow .2s}
+.sk:hover,.sk:focus-visible{transform:translateY(-3px);box-shadow:0 0 22px -4px rgba(63,216,232,.5);border-color:var(--cy)}
+.sk .d{display:none;position:absolute;bottom:calc(100% + 8px);left:0;width:210px;padding:10px 12px;font-size:13px;color:var(--t);background:#10162b;border:1px solid var(--b);border-radius:12px;z-index:5}
+.sk:hover .d,.sk:focus-visible .d{display:block}
+.tag{font-size:11.5px;padding:2px 9px;border-radius:99px;background:rgba(139,108,255,.18);color:#b9a8ff;font-weight:600}
+/* projects */
+.pc{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.pv{height:150px;display:grid;place-items:center;font:700 40px var(--h);color:rgba(255,255,255,.9);position:relative}
+.pv::after{content:"Preview placeholder";position:absolute;bottom:8px;right:12px;font:400 11px var(--f);opacity:.6}
+.pb{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pb p{flex:1}
+.tg{display:flex;flex-wrap:wrap;gap:6px}.tg span{font-size:12px;padding:3px 10px;border-radius:99px;border:1px solid var(--b);color:var(--m)}
+.pa{display:flex;gap:8px;flex-wrap:wrap}
+/* modal */
+.ov{position:fixed;inset:0;z-index:80;background:rgba(3,5,12,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:18px}
+.ov.on{display:flex;animation:fi .2s}
+@keyframes fi{from{opacity:0}}
+.md{max-width:720px;width:100%;max-height:88vh;overflow:auto;padding:30px;background:#0c1122;position:relative;animation:pop .25s}
+@keyframes pop{from{transform:translateY(14px) scale(.98);opacity:0}}
+.md h3{font-size:24px;margin-bottom:14px}.md h4{margin:18px 0 6px;font:700 15px var(--h);color:var(--cy)}
+.md p,.md li{color:var(--m);font-size:14.5px;margin:0}.md ul{margin:0;padding-left:18px}
+.x{position:absolute;top:14px;right:14px;background:none;border:1px solid var(--b);color:var(--t);border-radius:10px;width:36px;height:36px;cursor:pointer}
+.arch{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.arch span{padding:6px 12px;border-radius:10px;border:1px solid rgba(76,125,255,.4);background:rgba(76,125,255,.08);font-size:13px;color:var(--t)}
+.arch i{color:var(--m);font-style:normal}
+/* learning */
+.lc{position:relative;overflow:hidden}
+.lc .bar{height:3px;border-radius:3px;margin-top:16px;background:var(--b);overflow:hidden}
+.lc .bar::after{content:"";display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--blue),var(--cy));animation:ld 2.6s ease-in-out infinite}
+@keyframes ld{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+/* form */
+form{display:grid;gap:14px;padding:26px}
+label{font-size:14px;color:var(--m);display:grid;gap:6px}
+input,textarea{font:inherit;color:var(--t);background:rgba(255,255,255,.04);border:1px solid var(--b);border-radius:12px;padding:12px 14px;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--blue)}
+.er{color:#ff8a8a;font-size:12.5px;min-height:1em}
+#fs{font-size:14px;padding:10px 14px;border-radius:10px;display:none}
+#fs.ok{display:block;background:rgba(63,216,132,.12);color:#7be3ae}#fs.bad{display:block;background:rgba(255,100,100,.12);color:#ff9d9d}
+.soc{display:flex;gap:10px;flex-wrap:wrap}
+.soc a{padding:10px 16px;border-radius:12px;border:1px solid var(--b);background:var(--s);font-size:14px;transition:.2s}.soc a:hover{border-color:var(--cy);transform:translateY(-2px)}
+footer{border-top:1px solid var(--b);padding:44px 0 90px}
+.fg{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .links{flex-wrap:wrap;gap:16px}
+/* chat */
+#cb{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;padding:14px 20px;border-radius:99px;border:0;cursor:pointer;font:600 15px var(--f);color:#fff;background:linear-gradient(135deg,var(--blue),var(--vio));box-shadow:0 10px 34px -6px rgba(76,125,255,.8);transition:transform .2s}
+#cb:hover{transform:scale(1.04)}
+#cp{position:fixed;right:18px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:61;width:min(380px,calc(100vw - 36px));height:min(540px,calc(100% - 120px));display:flex;flex-direction:column;background:#0b1020;opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;visibility:hidden;transition:.25s}
+#cp.on{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+.ch{padding:16px 18px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:start}
+.ch b{font-family:var(--h);font-size:17px}.ch span{display:block;color:var(--m);font-size:13px}
+#ms{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:86%;padding:10px 14px;border-radius:16px;font-size:14.5px;line-height:1.5;white-space:pre-line}
+.m.b{background:rgba(255,255,255,.07);border-bottom-left-radius:4px}.m.u{align-self:flex-end;background:linear-gradient(135deg,var(--blue),var(--vio));border-bottom-right-radius:4px}
+#qs{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px}
+#qs button{font:inherit;font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid var(--b);background:none;color:var(--m);cursor:pointer}#qs button:hover{color:var(--t);border-color:var(--cy)}
+#cf{display:flex;gap:8px;padding:12px;border-top:1px solid var(--b)}
+#cf input{padding:10px 12px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="w nb">
+<a href="#home" class="logo" aria-label="Prabin Thapa, home">PT</a>
+<div class="links" id="links"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a></div>
+<a href="#contact" class="btn p sm">Let's Connect</a>
+<button class="burger" id="bg" aria-label="Open menu" aria-expanded="false">☰</button>
+</div></nav>
+
+<main>
+<section class="hero" id="home"><div class="w hg">
+<div>
+<span class="badge"><i></i>Available for Internship &amp; Opportunities</span>
+<h1><small>Hi, I'm Prabin Thapa.</small>I Build <span class="grad">Backend Systems</span> &amp; AI-Powered Applications.</h1>
+<p>Currently pursuing BCA at Lumbini ICT Campus and building my skills in Python, Django, Generative AI, RAG, and modern web technologies.</p>
+<div class="cta"><a class="btn p" href="#projects">View My Projects</a><a class="btn" href="#contact">Let's Connect</a><a class="lnk" href="RESUME_URL" download>Download Resume</a></div>
+</div>
+<div class="pw">
+<div class="ring"></div>
+<div class="pi" id="pi"><!-- Replace with: <img src="YOUR_PHOTO_URL" alt="Portrait of Prabin Thapa" loading="lazy"> -->
+<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>Profile photo placeholder</div></div>
+<span class="fb">Python</span><span class="fb">Django</span><span class="fb">AI</span><span class="fb">RAG</span><span class="fb">Git</span>
+</div></div></section>
+
+<section id="about"><div class="w">
+<h2 class="rv">About Me</h2>
+<p class="sub rv">I’m currently pursuing a Bachelor of Computer Applications at Lumbini ICT Campus. My primary interests are backend development and Generative AI. I enjoy building practical applications that combine software engineering with AI.</p>
+<div class="grid g4 rv" style="margin-bottom:34px">
+<div class="glass card"><h3>BCA Student</h3><p>Lumbini ICT Campus</p></div>
+<div class="glass card"><h3>Python Developer</h3><p>Backend-focused</p></div>
+<div class="glass card"><h3>AI Enthusiast</h3><p>GenAI &amp; RAG</p></div>
+<div class="glass card"><h3>Project Builder</h3><p>Learning by building</p></div></div>
+<div class="two rv">
+<div class="tl"><div><b>Foundations</b><span>Programming in Python, C, C#, Java, PHP and web basics.</span></div><div><b>Backend focus</b><span>Building Django applications with databases and role-based access.</span></div><div><b>Exploring GenAI</b><span>RAG, chatbots, LLM APIs, agents and automation.</span></div></div>
+<div class="glass card"><h3>Currently learning</h3><div class="chips" style="margin-top:12px"><span class="tag">Django</span><span class="tag">Generative AI</span><span class="tag">RAG</span><span class="tag">AI Agents</span><span class="tag">AI Automation</span><span class="tag">Modern AI app development</span></div></div>
+</div></div></section>
+
+<section id="skills"><div class="w">
+<h2 class="rv">Technical Skills</h2>
+<p class="sub rv">Hover or focus a skill for details. AI topics are marked as learning, not mastery.</p>
+<div id="skl"></div></div></section>
+
+<section id="projects"><div class="w">
+<h2 class="rv">Featured Projects</h2>
+<p class="sub rv">Open a project for the problem, solution, architecture, and notes.</p>
+<div class="grid g3" id="pl"></div></div></section>
+
+<section id="learning"><div class="w">
+<h2 class="rv">Currently Exploring</h2>
+<p class="sub rv">Actively improving. No fake percentages, just steady progress.</p>
+<div class="grid g3 rv" id="ll"></div>
+<h2 style="margin-top:80px" class="rv">Education</h2>
+<div class="tl rv" style="max-width:520px;margin-top:24px"><div><b>Bachelor of Computer Applications (BCA)</b><span>Lumbini ICT Campus · Current student</span></div></div>
+</div></section>
+
+<section id="github"><div class="w">
+<h2 class="rv">Building in Public</h2>
+<p class="sub rv">Code, experiments, and learning notes live on GitHub.</p>
+<div class="grid g3 rv">
+<div class="glass card"><h3>GitHub profile</h3><p>Repositories and contribution activity.</p><p style="margin-top:14px"><a class="btn sm" href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer">Open GitHub</a></p></div>
+<div class="glass card"><h3>Repositories</h3><p>Add repository cards here, or link each project's GitHub button in the data block.</p></div>
+<div class="glass card"><h3>Contribution graph</h3><p>Add a graph embed after setting the GitHub URL. Remote images are blocked on this host.</p></div></div>
+</div></section>
+
+<section id="contact"><div class="w two">
+<div><h2 class="rv">Let's Build Something Together</h2>
+<p class="sub rv">Have an internship opportunity, project idea, or just want to talk about technology and AI? Feel free to reach out.</p>
+<div class="soc"><a href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer">GitHub</a><a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:YOUR_EMAIL">Email</a></div></div>
+<form class="glass rv" id="cf2" novalidate>
+<label>Name<input name="name" autocomplete="name" required><span class="er"></span></label>
+<label>Email<input name="email" type="email" autocomplete="email" required><span class="er"></span></label>
+<label>Subject<input name="subject" required><span class="er"></span></label>
+<label>Message<textarea name="message" rows="4" required></textarea><span class="er"></span></label>
+<div id="fs" role="status"></div>
+<button class="btn p" type="submit">Send Message</button></form>
+</div></section>
+</main>
+
+<footer><div class="w fg">
+<div><b style="font:700 20px var(--h)">Prabin Thapa</b><p style="color:var(--m);margin:6px 0 16px">BCA Student • Python Backend • Generative AI</p>
+<div class="soc"><a href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer">GitHub</a><a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer">Instagram</a><a href="mailto:YOUR_EMAIL">Email</a></div></div>
+<div class="links"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#learning">Learning</a><a href="#contact">Contact</a></div>
+<p style="color:var(--m);font-size:14px;width:100%;margin:0">© 2026 Prabin Thapa. Built with passion for technology.</p>
+</div></footer>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Project details"><div class="md glass" id="md"></div></div>
+
+<button id="cb" aria-expanded="false" aria-controls="cp">Ask Prabin's AI</button>
+<div id="cp" class="glass" role="dialog" aria-label="Prabin AI chat">
+<div class="ch"><div><b>Prabin AI</b><span>Ask me anything about Prabin.</span></div><button class="x" id="cx" style="position:static" aria-label="Close chat">✕</button></div>
+<div id="ms" aria-live="polite"></div><div id="qs"></div>
+<form id="cf" style="display:flex;padding:12px;gap:8px;border-top:1px solid var(--b)"><input id="ci" placeholder="Ask a question…" aria-label="Your question"><button class="btn p sm" type="submit">Send</button></form>
+</div>
+
+<script>
+/* ===== DATA LAYER: edit here. The chatbot reads only from PROFILE. ===== */
+const CONFIG={github:"YOUR_GITHUB_URL",email:"YOUR_EMAIL",formEndpoint:"" /* e.g. Formspree URL */,chatEndpoint:"" /* optional LLM backend URL */};
+const PROFILE={
+ name:"Prabin Thapa",headline:"BCA Student | Python Backend Developer | Generative AI & RAG Enthusiast",
+ education:"Bachelor of Computer Applications (BCA) at Lumbini ICT Campus. Current student.",
+ about:"Prabin is a BCA student interested in backend development, Generative AI, RAG systems, AI chatbots, and practical software development.",
+ skills:{Frontend:["HTML","CSS","JavaScript"],Backend:["Python","Django","PHP"],Languages:["Python","C","C#","Java","JavaScript","PHP"],Database:["MySQL","SQLite"],Tools:["Git","GitHub","VS Code","Android Studio"]},
+ learning:["Django","Generative AI","RAG","AI Agents","AI Automation","Modern AI application development"],
+ interests:"Backend development, Generative AI, RAG, AI chatbots, and practical AI applications. Open to internships, junior roles, and freelance work.",
+ experience:"Prabin is a student and has no formal job experience listed. His experience comes from the projects he has built.",
+ contact:"Use the contact form on this page, or the email and social links in the footer."
+};
+const SKILLS=[
+ ["Frontend",[["HTML","Page structure and semantics."],["CSS","Layouts and styling."],["JavaScript","Browser interactivity."]]],
+ ["Backend",[["Python","Main language for backend work."],["Django","Web apps, ORM, auth, admin."],["PHP","Server-side web scripting."]]],
+ ["Programming Languages",[["Python","General purpose and AI work."],["C","Programming fundamentals."],["C#","Object-oriented development."],["Java","Object-oriented development."],["JavaScript","Web and scripting."],["PHP","Server-side scripting."]]],
+ ["Database",[["MySQL","Relational database."],["SQLite","Lightweight embedded database."]]],
+ ["AI / Generative AI",[["Generative AI","How LLM-powered apps are designed.",1],["RAG","Retrieval plus grounded generation.",1],["AI Chatbots","Conversational interfaces.",1],["LLM APIs","Calling hosted language models.",1],["AI Agents","Tool use and multi-step tasks.",1],["AI Automation","Practical AI workflows.",1]]],
+ ["Tools",[["Git","Version control."],["GitHub","Hosting and collaboration."],["VS Code","Daily editor."],["Android Studio","Android development IDE."]]]
+];
+const RAGFLOW=["User","Frontend","Backend","RAG Pipeline","Vector Database","LLM","Response"];
+const TBD="Add your own notes here before sharing.";
+const PROJECTS=[
+ {n:"Book Distribution System",c:"#2b5cff,#7a5cff",d:"A role-based Django web application for managing book distribution, recipients, requests, approvals, inventory, and distribution records.",t:["Django","Python","HTML","CSS","Bootstrap","JavaScript","SQLite/MySQL"],
+  prob:"Tracking book stock, recipients, and requests by hand is slow and error-prone.",sol:"A Django app where roles control who can manage books, distribute them, and approve or reject requests.",
+  f:["Authentication","Role-based access","Book management","Distribution management","Request approval/rejection","Receipt generation"],a:["User","Django Views","Business Logic","ORM","SQLite/MySQL"],ch:TBD,l:TBD},
+ {n:"AI Chatbot",c:"#0e8fa8,#3a5cff",d:"An AI-powered conversational application. Technology list to be confirmed by Prabin.",t:["Python","LLM APIs"],
+  prob:"Users need natural-language answers instead of fixed menus.",sol:"A chatbot that sends user messages to a language model and returns responses.",f:["Conversational interface","LLM-generated replies"],a:["User","Interface","Backend","LLM","Response"],ch:TBD,l:TBD},
+ {n:"Secure PDF Chatbot",c:"#6a44e0,#2b5cff",d:"An AI-powered application designed to allow users to interact with PDF documents while applying security-focused controls around document processing and AI responses.",t:["Python","AI/LLM APIs","PDF processing","RAG"],
+  prob:"Chatting with documents raises risks around handling files and controlling AI output.",sol:"A PDF Q&A app with security-focused controls around document processing and responses.",f:["PDF upload and text extraction","Question answering over a document","Security-focused controls"],a:RAGFLOW,ch:TBD,l:TBD},
+ {n:"RAG-Based Chatbot",c:"#1f7ae0,#3fd8e8",d:"An AI chatbot that retrieves relevant information from a knowledge base before generating responses.",t:["Python","Embeddings","Vector search","LLM APIs"],
+  prob:"Language models alone can answer without grounding in your own data.",sol:"Retrieve relevant chunks from a knowledge base, then have the LLM answer from them.",f:["Document ingestion","Chunking","Embeddings","Vector search","Retrieval","LLM response generation"],a:RAGFLOW,ch:TBD,l:TBD},
+ {n:"Multi-Document Chatbot",c:"#7a3fe0,#0e8fa8",d:"An AI document assistant that allows users to work with multiple document formats and ask questions across their uploaded knowledge base.",t:["Python","Streamlit","RAG","Vector Database","LLM APIs"],
+  prob:"Answers are often spread across several files in different formats.",sol:"Upload several documents and ask questions across the combined knowledge base.",f:["Multiple document formats","Cross-document questions","Retrieval-based answers"],a:RAGFLOW,ch:TBD,l:TBD}
+];
+const LEARN=[["Django","Building production-ready backend applications and REST APIs."],["Generative AI","Learning how modern LLM-powered applications are designed."],["RAG","Exploring embeddings, vector databases, retrieval pipelines, and grounded AI responses."],["AI Agents","Learning how AI systems can use tools and perform multi-step tasks."],["AI Automation","Exploring practical AI workflows and business automation."]];
+
+/* ===== RENDER ===== */
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$("#skl").innerHTML=SKILLS.map(([c,l])=>`<div class="cat rv"><h3>${c}${c.startsWith("AI")?'<span class="tag">Currently Learning</span>':""}</h3><div class="chips">${l.map(([n,d,x])=>`<div class="sk glass" tabindex="0">${n}${x?' <span class="tag">Learning</span>':""}<span class="d">${d}</span></div>`).join("")}</div></div>`).join("");
+$("#pl").innerHTML=PROJECTS.map((p,i)=>`<article class="glass card pc rv"><div class="pv" style="background:linear-gradient(135deg,${p.c.split(",")[0]}88,${p.c.split(",")[1]}88)">${p.n.split(" ").map(w=>w[0]).join("").slice(0,3)}</div><div class="pb"><h3>${p.n}</h3><p>${p.d}</p><div class="tg">${p.t.map(t=>`<span>${t}</span>`).join("")}</div><div class="pa"><a class="btn sm" href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer">GitHub</a><button class="btn p sm" data-i="${i}">View Details</button></div></div></article>`).join("");
+$("#ll").innerHTML=LEARN.map(([t,d])=>`<div class="glass card lc"><h3>${t}</h3><p>${d}</p><div class="bar"></div></div>`).join("");
+
+/* ===== MODAL ===== */
+let last;const ov=$("#ov");
+function openP(i){const p=PROJECTS[i];last=document.activeElement;
+$("#md").innerHTML=`<button class="x" aria-label="Close">✕</button><h3>${p.n}</h3><h4>Problem</h4><p>${p.prob}</p><h4>Solution</h4><p>${p.sol}</p><h4>Features</h4><ul>${p.f.map(x=>`<li>${x}</li>`).join("")}</ul><h4>Technologies</h4><div class="tg">${p.t.map(t=>`<span>${t}</span>`).join("")}</div><h4>Architecture</h4><div class="arch">${p.a.map((x,k)=>(k?"<i>→</i>":"")+`<span>${x}</span>`).join("")}</div><h4>Challenges</h4><p>${p.ch}</p><h4>What I learned</h4><p>${p.l}</p><div class="pa" style="margin-top:20px"><a class="btn sm" href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer">GitHub</a><a class="btn sm" href="YOUR_LIVE_DEMO_URL" target="_blank" rel="noopener noreferrer">Live Demo</a></div>`;
+ov.classList.add("on");$("#md .x").focus();$("#md .x").onclick=closeP}
+function closeP(){ov.classList.remove("on");last&&last.focus()}
+$("#pl").addEventListener("click",e=>{const b=e.target.closest("[data-i]");b&&openP(+b.dataset.i)});
+ov.addEventListener("click",e=>{if(e.target===ov)closeP()});
+addEventListener("keydown",e=>{if(e.key==="Escape"){ov.classList.contains("on")&&closeP();chat(false)}});
+
+/* ===== NAV + REVEAL ===== */
+const nav=$("#nav");addEventListener("scroll",()=>nav.classList.toggle("sc",scrollY>20),{passive:true});
+$("#bg").onclick=()=>{const o=nav.classList.toggle("open");$("#bg").setAttribute("aria-expanded",o)};
+$("#links").onclick=()=>nav.classList.remove("open");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+/* ===== CHATBOT (local rules over PROFILE; swap answer() for CONFIG.chatEndpoint) ===== */
+const FALLBACK="I'm still learning about Prabin. You can contact him directly for more information.";
+const Q=["Who is Prabin?","What technologies does Prabin know?","What is Prabin currently learning?","Tell me about his projects.","Does Prabin know Django?","How can I contact Prabin?"];
+function answer(q){q=q.toLowerCase();const P=PROFILE,has=(...k)=>k.some(x=>q.includes(x));
+ if(has("who","about prabin","introduce"))return `${P.name}: ${P.headline}.\n${P.about}`;
+ if(has("django"))return "Prabin has built a role-based Django project (Book Distribution System) and is currently strengthening his Django skills, including production-ready apps and REST APIs.";
+ if(has("learn","exploring","studying"))return "Currently learning: "+P.learning.join(", ")+".";
+ if(has("ai project","rag","chatbot","pdf"))return "AI projects: AI Chatbot, Secure PDF Chatbot, RAG-Based Chatbot, and Multi-Document Chatbot. Open a project card for details. AI topics are things he is still learning.";
+ if(has("project","built","build"))return "Projects: "+PROJECTS.map(p=>p.n).join(", ")+". Use View Details on each card for more.";
+ if(has("tech","skill","know","language","stack"))return Object.entries(P.skills).map(([k,v])=>k+": "+v.join(", ")).join("\n");
+ if(has("educat","college","campus","study","bca","degree"))return P.education;
+ if(has("experience","job","work"))return P.experience;
+ if(has("career","interest","goal","role","intern","hire"))return P.interests;
+ if(has("contact","email","reach","linkedin","github","hire"))return P.contact;
+ return FALLBACK}
+const ms=$("#ms"),cp=$("#cp");
+function add(t,c){const d=document.createElement("div");d.className="m "+c;d.textContent=t;ms.appendChild(d);ms.scrollTop=ms.scrollHeight}
+function ask(q){if(!q.trim())return;add(q,"u");setTimeout(()=>add(answer(q),"b"),350)}
+$("#qs").innerHTML=Q.map(q=>`<button type="button">${q}</button>`).join("");
+$("#qs").onclick=e=>e.target.tagName==="BUTTON"&&ask(e.target.textContent);
+$("#cf").onsubmit=e=>{e.preventDefault();const i=$("#ci");ask(i.value);i.value=""};
+function chat(o){cp.classList.toggle("on",o);$("#cb").setAttribute("aria-expanded",o);if(o){!ms.children.length&&add("Hi! I can answer questions about Prabin's education, skills, projects, and learning.","b");$("#ci").focus()}}
+$("#cb").onclick=()=>chat(!cp.classList.contains("on"));$("#cx").onclick=()=>chat(false);
+
+/* ===== CONTACT FORM ===== */
+$("#cf2").addEventListener("submit",async e=>{e.preventDefault();const f=e.target,fs=$("#fs");let ok=true;
+ f.querySelectorAll("label").forEach(l=>{const i=l.querySelector("input,textarea"),v=i.value.trim();let m="";
+  if(!v)m="Required.";else if(i.type==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))m="Enter a valid email address.";else if(i.name==="message"&&v.length<10)m="Write at least 10 characters.";
+  l.querySelector(".er").textContent=m;i.setAttribute("aria-invalid",!!m);if(m)ok=false});
+ fs.className="";if(!ok){fs.className="bad";fs.textContent="Fix the highlighted fields and try again.";return}
+ if(!CONFIG.formEndpoint){fs.className="bad";fs.textContent="Sending is not connected yet. Use the email link for now.";return}
+ try{const r=await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(f)))});
+  if(!r.ok)throw 0;fs.className="ok";fs.textContent="Message sent. Thanks for reaching out.";f.reset()}catch{fs.className="bad";fs.textContent="Message failed to send. Try again or use email."}});
+</script>
+</body>
+</html>
